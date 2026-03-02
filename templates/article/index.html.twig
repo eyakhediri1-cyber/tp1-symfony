@@ -18,6 +18,7 @@
                         <th>ID</th>
                         <th>Titre</th>
                         <th>Auteur</th>
+                        <th>Catégorie</th> 
                         <th>Date</th>
                         <th>Statut</th>
                     </tr>
@@ -28,6 +29,13 @@
                             <td class="text-center">{{ article.id }}</td>
                             <td>{{ article.titre }}</td>
                             <td>{{ article.auteur }}</td>
+                             <td class="text-center">      
+                                {% if article.categorie %}
+                                    <span class="badge bg-info"> {{ article.categorie.nom }}</span>
+                                {% else %}
+                                    <span class="badge bg-secondary">Sans catégorie</span>
+                                {% endif %}
+                            </td>
                             <td>{{ article.dateCreation|date('d/m/Y') }}</td>
                             <td class="text-center">
                                 {% if article.publie %}
