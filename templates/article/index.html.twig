@@ -3,7 +3,7 @@
 {% block title %}Liste des articles{% endblock %}
 
 {% block body %}
-    <h1 class="mb-4">📰 Articles (depuis la BDD)</h1>
+    <h1 class="mb-4"> Articles</h1>
 
     {% if articles is empty %}
         <div class="alert alert-info">
@@ -31,9 +31,9 @@
                             <td>{{ article.dateCreation|date('d/m/Y') }}</td>
                             <td class="text-center">
                                 {% if article.publie %}
-                                    <span class="badge bg-success">✅ Publié</span>
+                                    <span class="badge bg-success"> Publié</span>
                                 {% else %}
-                                    <span class="badge bg-warning text-dark">📝 Brouillon</span>
+                                    <span class="badge bg-warning text-dark"> Brouillon</span>
                                 {% endif %}
                             </td>
                         </tr>
