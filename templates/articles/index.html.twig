@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des articles{% endblock %}
+
+{% block body %}
+    <h1>Liste des articles</h1>
+
+    {% for article in articles %}
+        <p>
+            <a href="{{ path('app_article_detail', {id: article.id}) }}">
+                {{ article.titre }}
+            </a>
+            — {{ article.auteur }}
+            {% if article.publie %}✅{% else %}❌{% endif %}
+        </p>
+    {% else %}
+        <p>Aucun article pour le moment.</p>
+    {% endfor %}
+
+    <a href="{{ path('app_article_nouveau') }}">+ Ajouter un article</a>
+{% endblock %}

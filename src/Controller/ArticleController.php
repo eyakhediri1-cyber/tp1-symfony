@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\Article;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\ArticleRepository;
 
 final class ArticleController extends AbstractController
 {
