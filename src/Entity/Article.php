@@ -28,6 +28,10 @@ class Article
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank(message: "L'auteur est obligatoire.")]
     #[Assert\Length(min: 2, max: 100)]
+    #[Assert\Regex(
+    pattern: '/^[a-zA-ZÀ-ÿ\s\-]+$/',
+    message: 'Le nom de l\'auteur ne peut contenir que des lettres, espaces et tirets.'
+    )]
     private ?string $auteur = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
@@ -36,7 +40,7 @@ class Article
 
     #[ORM\Column]
     private ?bool $publie = null;
-
+    
     public function getId(): ?int
     {
         return $this->id;
