@@ -15,7 +15,7 @@ final class TacheController extends AbstractController
     #[Route('/taches', name: 'app_taches')]
     public function index(TacheRepository $repo): Response
     {
-        $taches = $repo->findAll();
+        $taches = $repo->findBy([], ['terminee' => 'ASC']);
         return $this->render('tache/index.html.twig', ['taches' => $taches]);
     }
     #[Route('/taches/ajouter', name: 'app_tache_ajouter')]
@@ -34,5 +34,13 @@ final class TacheController extends AbstractController
     public function show(Tache $tache): Response
     {
         return $this->render('tache/show.html.twig', ['tache' => $tache]);
+    }
+    #[Route('/taches/{id}/terminer', name: 'app_tache_terminer')]
+    public function terminer(Tache $tache, EntityManagerInterface $em): Response
+    {
+    $tache->setTerminee(true);
+    $em->flush();
+
+    return $this->redirectToRoute('app_taches');
     }
 }
