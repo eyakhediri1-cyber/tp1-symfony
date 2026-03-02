@@ -6,11 +6,19 @@
     <h1>Liste des tâches</h1>
 
     {% for tache in taches %}
-        <p>
+        <p style="{{ tache.terminee ? 'text-decoration: line-through; color: gray;' : '' }}">
             <a href="{{ path('app_tache_show', {id: tache.id}) }}">
                 {{ tache.titre }}
             </a>
-            {% if tache.terminee %}✅ Terminée{% else %} En cours{% endif %}
+
+            {% if not tache.terminee %}
+                <a href="{{ path('app_tache_terminer', {id: tache.id}) }}">
+                    Marquer terminée 
+                </a>
+                
+            {% else %}
+                 Terminée
+            {% endif %}
         </p>
     {% else %}
         <p>Aucune tâche pour le moment.</p>
