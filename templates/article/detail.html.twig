@@ -8,9 +8,9 @@
         Par <strong class="text-dark">{{ article.auteur }}</strong> 
         — {{ article.dateCreation|date('d/m/Y à H:i') }}
         {% if article.publie %}
-            <span class="badge bg-success ms-2">✅ Publié</span>
+            <span class="badge bg-success ms-2">Publié</span>
         {% else %}
-            <span class="badge bg-warning text-dark ms-2">📝 Brouillon</span>
+            <span class="badge bg-warning text-dark ms-2">Brouillon</span>
         {% endif %}
     </p>
     
